@@ -1,5 +1,5 @@
 body {
-  background-image: url(../papyr.jpg);
+  background-image: url(papyr.jpg);
   background-size: fill;
   display: flex;
   margin: 0px;
@@ -26,7 +26,7 @@ body {
 .enemy-container {
   height: 100%;
   width: 90%;
-  background-image: url(../statblockparch.jpg);
+  background-image: url(statblockparch.jpg);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ body {
   border: 0.5px solid #000;
   border-top: 0px;
   border-bottom: 0px;
-  background-image: url(../statblockbar.jpg);
+  background-image: url(statblockbar.jpg);
   background-size: cover;
 }
 

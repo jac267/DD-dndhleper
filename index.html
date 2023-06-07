@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- library importante -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <!-- fa fa font -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      class="jsbin"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+    ></script>
+    <script
+      class="jsbin"
+      src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
+    ></script>
+    <script src="map.js" defer></script>
+    <meta charset="utf-8" />
+    <title>JS Bin</title>
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script
+      type="text/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"
+    />
+
+    <link rel="stylesheet" href="client.css" />
+  </head>
+  <body>
+    <div id="enemy-container-bar"></div>
+
+    <script type="text/babel" src="enemyContainer.js"></script>
+    <script type="text/babel">
+      ReactDOM.render(
+        <EnemyContainerBar />,
+        document.getElementById("enemy-container-bar")
+      );
+    </script>
+
+    <div class="map-container">
+      <button class="delete-map" onclick="removeMap()">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+      <div id="token-size" onmousemove="rezizeToken()"></div>
+
+      <div id="plaground"></div>
+      <input id="input-map" type="file" onchange="readURL(this);" />
+    </div>
+  </body>
+</html>

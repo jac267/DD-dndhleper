@@ -1,0 +1,233 @@
+body {
+  background-image: url(../papyr.jpg);
+  background-size: fill;
+  display: flex;
+  margin: 0px;
+  overflow: hidden;
+}
+
+.map-container {
+  position: absolute;
+  left: 30%;
+  width: 70%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.enemy-container-bar {
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  display: flex;
+}
+
+.enemy-container {
+  height: 100%;
+  width: 90%;
+  background-image: url(../statblockparch.jpg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+.bar {
+  width: 5px;
+  border: 0.5px solid #000;
+  border-top: 0px;
+  border-bottom: 0px;
+  background-image: url(../statblockbar.jpg);
+  background-size: cover;
+}
+
+#plaground {
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.fa-trash {
+  color: red;
+  font: 100px;
+  width: 100%;
+  height: 100%;
+}
+
+.delete-map {
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  align-self: flex-start;
+}
+
+.delete-map:active {
+  border: none;
+  background: none;
+  cursor: default;
+  font: 1em sans-serif;
+}
+
+.token {
+  background-color: gray;
+  border-radius: 50%;
+
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  border: rgba(1, 1, 1, 0) solid 5px;
+  z-index: 1000;
+}
+
+#token-size {
+  background-color: gray;
+  border-radius: 50%;
+
+  width: 100px;
+  height: 100px;
+  background-image: url("img_avatar.png");
+  background-size: contain;
+}
+
+.enemy-list {
+  padding: 0px;
+  padding-left: 10px;
+  color: #7a200d;
+  font-family: "SegoeUI_bold_online_security";
+  src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.stats li {
+  display: flex;
+  flex-direction: column;
+}
+.addMonster {
+  margin: auto;
+  align-self: center;
+
+  text-align: center;
+
+  width: 50%;
+  height: 5%;
+  padding-top: 5%;
+  margin-top: 5%;
+  background-color: #7a200d;
+  color: white;
+}
+
+.tapered-rule {
+  fill: #922610;
+}
+.enemy-template {
+  list-style: none;
+  padding: 0px;
+  cursor: pointer;
+}
+.enemy-template:hover {
+  border: #000 solid 1px;
+  border-radius: 10px;
+}
+.stats {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 1rem;
+  list-style: none;
+  padding: 0px;
+  padding-left: 30px;
+}
+
+.stats h3 {
+  margin: 0px;
+}
+
+.stats h2 {
+  margin: 0px;
+  margin-top: 1vh;
+}
+
+.name {
+  padding-left: 30px;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+.NameMod {
+  width: 75%;
+  background-color: rgba(1, 1, 1, 0);
+  color: #7a200d;
+  font-family: "SegoeUI_bold_online_security";
+  src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
+  font-size: x-large;
+  margin-left: 27px;
+  border-style: none;
+}
+.hpMod {
+  width: 100px;
+  background-color: rgba(1, 1, 1, 0);
+  color: #7a200d;
+  font-family: "SegoeUI_bold_online_security";
+  src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
+  font-size: large;
+  border-style: none;
+  border-bottom: solid 1px #7a200d;
+}
+.ACMod {
+  width: 100px;
+  background-color: rgba(1, 1, 1, 0);
+  color: #7a200d;
+  font-family: "SegoeUI_bold_online_security";
+  src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
+  font-size: large;
+  border-style: none;
+  border-bottom: solid 1px #7a200d;
+}
+.InitMod {
+  width: 100px;
+  background-color: rgba(1, 1, 1, 0);
+  color: #7a200d;
+  font-family: "SegoeUI_bold_online_security";
+  src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
+  font-size: large;
+  border-style: none;
+  border-bottom: solid 1px #7a200d;
+}
+
+.selectionnedLi {
+  border: #000 solid 10px !important;
+  border-radius: 10px;
+}
+
+.selectionnedToken {
+  border: black solid 5px !important;
+}
+
+.currentTurnLi {
+  border: #7a200d solid 2px;
+  border-radius: 10px;
+}
+
+.currentTurnToken {
+  border: #7a200d solid 5px;
+}
+
+#initiativeTracker {
+  margin: auto;
+  align-self: center;
+
+  text-align: center;
+
+  color: #7a200d;
+  font-family: "SegoeUI_bold_online_security";
+}

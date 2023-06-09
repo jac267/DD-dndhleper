@@ -16,6 +16,15 @@ function EnemyContainerBar() {
           <h1>Initiative</h1>
           <h2 id="initiativeTrackerTEXTE">PAUSED</h2>
         </div>
+        <div class="fakeDice">
+          <h3>Roll</h3>
+          <p id="result">0</p>
+          <p>=</p>
+          <ul class="rollLog" id="rollLog"></ul>
+        </div>
+        <p class="diceCheatSheet">
+          1 = d4, 2 = d6, 3 = d8, 4 = d10, 5 = d12, 6 = d20, 7 = d100
+        </p>
         <ul class="enemy-list" id="enemy-list"></ul>
       </div>
       <div class="bar"></div>
@@ -45,6 +54,7 @@ function EnemyTemplate(parms) {
               name="fname"
               defaultValue={parms.initiative}
               id={parms.id + "Init"}
+              onFocus={() => hasfocus(parms.id + "Init")}
             ></input>
           </li>
           <li>|</li>
@@ -56,6 +66,7 @@ function EnemyTemplate(parms) {
               name="fname"
               defaultValue={parms.hitPoint}
               id={parms.id + "hpMod"}
+              onFocus={() => hasfocus(parms.id + "hpMod")}
             ></input>
           </li>
           <li>|</li>
@@ -67,6 +78,7 @@ function EnemyTemplate(parms) {
               name="fname"
               defaultValue={parms.ac}
               id={parms.id + "AC"}
+              onFocus={() => hasfocus(parms.id + "AC")}
             ></input>
           </li>
 

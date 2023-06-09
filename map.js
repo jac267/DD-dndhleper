@@ -24,18 +24,11 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  for (const e of document.getElementsByClassName("token")) {
-    console.log(e.id);
-  }
-});
-
-$(document).ready(function () {
   $("#token-size").resizable();
 });
 
 $("#input-Monster").change(function () {
   filename = this.files[0].name;
-  console.log(filename);
 });
 
 function rezizeToken() {
@@ -144,7 +137,9 @@ function addMonster(name, initiative, hitPoint, ac, image) {
 
 function selectionned(id) {
   properId = String(id).replace("token", "");
-
+  if (id != properId) {
+    location.href = "#" + properId;
+  }
   for (const e of document.getElementsByClassName("selectionnedLi")) {
     e.className = e.className.replace(" selectionnedLi", "");
   }
@@ -158,8 +153,8 @@ function selectionned(id) {
     " selectionnedToken";
 }
 
-document.body.onkeyup = function (e) {
-  if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+function nextSlidePlease(e) {
+  if (e.keyCode == 39) {
     tracker = document.getElementById("initiativeTrackerTEXTE");
 
     tour = tracker.textContent;
@@ -167,8 +162,9 @@ document.body.onkeyup = function (e) {
     if (tour == "PAUSED") {
       max = 0;
       for (const e of document.getElementsByClassName("InitMod")) {
-        if (max < e.value) {
-          max = e.value;
+        console.log(e);
+        if (max < parseInt(e.value)) {
+          max = parseInt(e.value);
         }
       }
 
@@ -178,9 +174,11 @@ document.body.onkeyup = function (e) {
     } else {
       max = 0;
       for (const e of document.getElementsByClassName("InitMod")) {
-        console.log(parseInt(tour));
-        if (max < e.value && e.value < parseInt(tour)) {
-          max = e.value;
+        console.log("tour:" + parseInt(tour));
+        console.log("max:" + max);
+        console.log("e.value:" + e.value);
+        if (max < parseInt(e.value) && parseInt(e.value) < parseInt(tour)) {
+          max = parseInt(e.value);
         }
       }
       value = max;
@@ -189,6 +187,8 @@ document.body.onkeyup = function (e) {
     document.getElementById("initiativeTrackerTEXTE").textContent = value;
 
     clearCurrentTurn();
+    clearCurrentTurn();
+    clearCurrentTurn();
     for (const e of document.getElementsByClassName("InitMod")) {
       if (e.value == value) {
         console.log(String(e.id).replace("Init", ""));
@@ -196,7 +196,7 @@ document.body.onkeyup = function (e) {
       }
     }
   }
-};
+}
 
 function currentTurn(id) {
   properId = id;
@@ -210,8 +210,99 @@ function currentTurn(id) {
 function clearCurrentTurn() {
   for (const e of document.getElementsByClassName("currentTurnLi")) {
     e.className = e.className.replace(" currentTurnLi", "");
+    console.log(e.id);
   }
   for (const e of document.getElementsByClassName("currentTurnToken")) {
     e.className = e.className.replace(" currentTurnToken", "");
+  }
+}
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max) + 1;
+}
+
+totalroll = 0;
+focused_item_id = "";
+document.body.onkeyup = function (e) {
+  nextSlidePlease(e);
+  log = document.getElementById("rollLog");
+  var roll = document.createElement("li");
+  //d4
+  if (e.keyCode == 49) {
+    nb = getRandomInt(4);
+    totalroll += nb;
+    roll.textContent = "+ " + nb + "/4";
+    log.appendChild(roll);
+  }
+  //d6
+  if (e.keyCode == 50) {
+    nb = getRandomInt(6);
+    totalroll += nb;
+    roll.textContent = "+ " + nb + "/6";
+    log.appendChild(roll);
+  }
+  //d8
+  if (e.keyCode == 51) {
+    nb = getRandomInt(8);
+    totalroll += nb;
+    roll.textContent = "+ " + nb + "/8";
+    log.appendChild(roll);
+  }
+  //d10
+  if (e.keyCode == 52) {
+    nb = getRandomInt(10);
+    totalroll += nb;
+    roll.textContent = "+ " + nb + "/10";
+    log.appendChild(roll);
+  }
+  //d12
+  if (e.keyCode == 53) {
+    nb = getRandomInt(12);
+    totalroll += nb;
+    roll.textContent = "+ " + nb + "/12";
+    log.appendChild(roll);
+  }
+  //d20
+  if (e.keyCode == 54) {
+    nb = getRandomInt(20);
+    totalroll += nb;
+    roll.textContent = "+ " + nb + "/20";
+    log.appendChild(roll);
+  }
+  //d100
+  if (e.keyCode == 55) {
+    nb = getRandomInt(100);
+    totalroll += nb;
+    roll.textContent = "+ " + nb + "/100";
+    log.appendChild(roll);
+  }
+  //reset
+  if (e.keyCode == 40) {
+    totalroll = 0;
+    log.innerHTML = "";
+  }
+
+  //past
+  if (e.keyCode == 38) {
+    if (focused_item_id != "") {
+      document.getElementById(focused_item_id).value = totalroll;
+    }
+  }
+
+  //remove
+  if (e.keyCode == 37) {
+    document.getElementById(focused_item_id).value =
+      document.getElementById(focused_item_id).value -
+      parseInt(prompt("DEGATS"));
+  }
+  document.getElementById("result").textContent = totalroll;
+};
+
+function hasfocus(id) {
+  focused_item_id = id;
+}
+
+function hasnotfocus(id) {
+  if (focused_item_id == id) {
+    focused_item_id = "";
   }
 }

@@ -83,6 +83,8 @@ body {
 
   border: rgba(1, 1, 1, 0) solid 5px;
   z-index: 1000;
+
+  opacity: 0.7;
 }
 
 #token-size {
@@ -105,6 +107,7 @@ body {
   overflow: hidden;
   overflow-y: scroll;
 
+  border-top: #7a200d 1px solid;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -185,7 +188,7 @@ body {
 }
 .ACMod {
   width: 100px;
-  background-color: rgba(1, 1, 1, 0);
+  background-color: rgba(1, 1, 1, 0.5);
   color: #7a200d;
   font-family: "SegoeUI_bold_online_security";
   src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
@@ -195,7 +198,7 @@ body {
 }
 .InitMod {
   width: 100px;
-  background-color: rgba(1, 1, 1, 0);
+  background-color: rgba(1, 1, 1, 0.5);
   color: #7a200d;
   font-family: "SegoeUI_bold_online_security";
   src: url(chrome-extension://llbcnfanfmjhpedaedhbcnpgeepdnnok/segoe-ui-bold.woff);
@@ -210,19 +213,23 @@ body {
 }
 
 .selectionnedToken {
-  border: black solid 5px !important;
+  border: black solid 3px;
 }
 
 .currentTurnLi {
   border: #7a200d solid 2px;
+
   border-radius: 10px;
 }
 
 .currentTurnToken {
+  opacity: 1 !important;
   border: #7a200d solid 5px;
 }
 
 #initiativeTracker {
+  position: relative;
+  top: -7.5%;
   margin: auto;
   align-self: center;
 
@@ -230,4 +237,35 @@ body {
 
   color: #7a200d;
   font-family: "SegoeUI_bold_online_security";
+}
+
+.fakeDice {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  top: -5%;
+}
+.fakeDice h3 {
+  font-size: 35px;
+  color: #7a200d;
+}
+.fakeDice p {
+  font-size: 35px;
+  color: #7a200d;
+}
+.rollLog {
+  list-style: none;
+  border: #7a200d solid 5px;
+  width: 40%;
+  height: 100px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 5px;
+  gap: 1rem;
+}
+
+.diceCheatSheet {
+  text-align: center;
 }

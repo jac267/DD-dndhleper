@@ -61,7 +61,7 @@ function EnemyTemplate(parms) {
           <li>
             <h3 class="stats-title">Hit Points</h3>{" "}
             <input
-              type="number"
+              type="text"
               class="hpMod"
               name="fname"
               defaultValue={parms.hitPoint}

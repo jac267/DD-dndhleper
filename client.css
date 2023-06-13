@@ -3,7 +3,6 @@ body {
   background-size: fill;
   display: flex;
   margin: 0px;
-  overflow: hidden;
 }
 
 .map-container {
@@ -14,6 +13,7 @@ body {
 
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .enemy-container-bar {
@@ -48,6 +48,26 @@ body {
   width: 100%;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+#plagroundGRID {
+  position: absolute;
+  display: grid;
+  height: fit-content;
+  width: fit-content;
+}
+#frame {
+  position: absolute;
+  object-fit: contain;
+  width: 80%;
+}
+
+.item {
+  border: 1px solid #fff;
+  opacity: 0.2;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }
 
 .fa-trash {
@@ -97,6 +117,16 @@ body {
   background-size: contain;
 }
 
+#gridX {
+  width: 10%;
+}
+#gridY {
+  width: 10%;
+}
+
+#gridUpdate {
+  width: 10%;
+}
 .enemy-list {
   padding: 0px;
   padding-left: 10px;
@@ -268,4 +298,8 @@ body {
 
 .diceCheatSheet {
   text-align: center;
+}
+
+#sizeXY {
+  width: 10%;
 }

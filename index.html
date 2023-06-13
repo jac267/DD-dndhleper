@@ -59,8 +59,13 @@
       </button>
       <div id="token-size" onmousemove="rezizeToken()"></div>
 
-      <div id="plaground"></div>
+      <div id="plaground"><div id="plagroundGRID"></div></div>
+
       <input id="input-map" type="file" onchange="readURL(this);" />
+      <input type="number" id="gridX" />
+      <input type="number" id="gridY" />
+      <input type="number" id="sizeXY" />
+      <button onclick="updateGrid()" id="gridUpdate">update</button>
     </div>
   </body>
 </html>

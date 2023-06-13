@@ -230,8 +230,6 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/4";
     log.appendChild(roll);
-    roll.id = rollid + "roll";
-    location.href = "#" + roll.id;
   }
   //d6
   if (e.keyCode == 50) {
@@ -239,8 +237,6 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/6";
     log.appendChild(roll);
-    roll.id = rollid + "roll";
-    location.href = "#" + roll.id;
   }
   //d8
   if (e.keyCode == 51) {
@@ -248,8 +244,6 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/8";
     log.appendChild(roll);
-    roll.id = rollid + "roll";
-    location.href = "#" + roll.id;
   }
   //d10
   if (e.keyCode == 52) {
@@ -257,8 +251,6 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/10";
     log.appendChild(roll);
-    roll.id = rollid + "roll";
-    location.href = "#" + roll.id;
   }
   //d12
   if (e.keyCode == 53) {
@@ -266,8 +258,6 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/12";
     log.appendChild(roll);
-    roll.id = rollid + "roll";
-    location.href = "#" + roll.id;
   }
   //d20
   if (e.keyCode == 54) {
@@ -275,8 +265,6 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/20";
     log.appendChild(roll);
-    roll.id = rollid + "roll";
-    location.href = "#" + roll.id;
   }
   //d100
   if (e.keyCode == 55) {
@@ -284,8 +272,6 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/100";
     log.appendChild(roll);
-    roll.id = rollid + "roll";
-    location.href = "#" + roll.id;
   }
   //reset
   if (e.keyCode == 40) {
@@ -322,5 +308,31 @@ function hasfocus(id) {
 function hasnotfocus(id) {
   if (focused_item_id == id) {
     focused_item_id = "";
+  }
+}
+
+function updateGrid() {
+  document.getElementById("plagroundGRID").style.gridTemplateColumns = "";
+  document.getElementById("plagroundGRID").style.gridTemplateRows = "";
+  document.getElementById("plagroundGRID").innerHTML = "";
+
+  for (let e = 0; e < document.getElementById("gridX").value; e++) {
+    document.getElementById("plagroundGRID").style.gridTemplateColumns =
+      document.getElementById("plagroundGRID").style.gridTemplateColumns +
+      " " +
+      document.getElementById("sizeXY").value +
+      "px";
+
+    document.getElementById("plagroundGRID").style.gridTemplateRows =
+      document.getElementById("plagroundGRID").style.gridTemplateRows +
+      " " +
+      document.getElementById("sizeXY").value +
+      "px";
+
+    for (let i = 0; i < document.getElementById("gridY").value; i++) {
+      var container = document.createElement("div");
+      container.className = "item";
+      document.getElementById("plagroundGRID").appendChild(container);
+    }
   }
 }

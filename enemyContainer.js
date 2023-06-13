@@ -44,6 +44,7 @@ function EnemyTemplate(parms) {
           defaultValue="..."
           defaultValue={parms.name}
           id={parms.id + "Name"}
+          onFocus={() => hasfocus(parms.id + "Init")}
         ></input>
         <ul class="stats">
           <li>

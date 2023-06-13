@@ -174,9 +174,6 @@ function nextSlidePlease(e) {
     } else {
       max = 0;
       for (const e of document.getElementsByClassName("InitMod")) {
-        console.log("tour:" + parseInt(tour));
-        console.log("max:" + max);
-        console.log("e.value:" + e.value);
         if (max < parseInt(e.value) && parseInt(e.value) < parseInt(tour)) {
           max = parseInt(e.value);
         }
@@ -191,7 +188,6 @@ function nextSlidePlease(e) {
     clearCurrentTurn();
     for (const e of document.getElementsByClassName("InitMod")) {
       if (e.value == value) {
-        console.log(String(e.id).replace("Init", ""));
         currentTurn(String(e.id).replace("Init", ""));
       }
     }
@@ -220,9 +216,11 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max) + 1;
 }
 
+rollid = 0;
 totalroll = 0;
 focused_item_id = "";
 document.body.onkeyup = function (e) {
+  rollid += 1;
   nextSlidePlease(e);
   log = document.getElementById("rollLog");
   var roll = document.createElement("li");
@@ -232,6 +230,8 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/4";
     log.appendChild(roll);
+    roll.id = rollid + "roll";
+    location.href = "#" + roll.id;
   }
   //d6
   if (e.keyCode == 50) {
@@ -239,6 +239,8 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/6";
     log.appendChild(roll);
+    roll.id = rollid + "roll";
+    location.href = "#" + roll.id;
   }
   //d8
   if (e.keyCode == 51) {
@@ -246,6 +248,8 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/8";
     log.appendChild(roll);
+    roll.id = rollid + "roll";
+    location.href = "#" + roll.id;
   }
   //d10
   if (e.keyCode == 52) {
@@ -253,6 +257,8 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/10";
     log.appendChild(roll);
+    roll.id = rollid + "roll";
+    location.href = "#" + roll.id;
   }
   //d12
   if (e.keyCode == 53) {
@@ -260,6 +266,8 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/12";
     log.appendChild(roll);
+    roll.id = rollid + "roll";
+    location.href = "#" + roll.id;
   }
   //d20
   if (e.keyCode == 54) {
@@ -267,6 +275,8 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/20";
     log.appendChild(roll);
+    roll.id = rollid + "roll";
+    location.href = "#" + roll.id;
   }
   //d100
   if (e.keyCode == 55) {
@@ -274,6 +284,8 @@ document.body.onkeyup = function (e) {
     totalroll += nb;
     roll.textContent = "+ " + nb + "/100";
     log.appendChild(roll);
+    roll.id = rollid + "roll";
+    location.href = "#" + roll.id;
   }
   //reset
   if (e.keyCode == 40) {
@@ -284,15 +296,21 @@ document.body.onkeyup = function (e) {
   //past
   if (e.keyCode == 38) {
     if (focused_item_id != "") {
-      document.getElementById(focused_item_id).value = totalroll;
+      if (focused_item_id.includes("Init")) {
+        document.getElementById(focused_item_id).value = totalroll;
+      }
     }
   }
 
   //remove
   if (e.keyCode == 37) {
-    document.getElementById(focused_item_id).value =
-      document.getElementById(focused_item_id).value -
-      parseInt(prompt("DEGATS"));
+    if (focused_item_id.includes("hpMod")) {
+      input = prompt("DEGATS");
+      if (Number.isInteger(parseInt(input))) {
+        document.getElementById(focused_item_id).value =
+          document.getElementById(focused_item_id).value - parseInt(input);
+      }
+    }
   }
   document.getElementById("result").textContent = totalroll;
 };
